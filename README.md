@@ -40,7 +40,7 @@ token-type
 uid
 ```
 
-**Note** The tokens are set to change with each request
+**Note** The `access-token` and `expiry` chnage with each request, but the other tokens are stable
 
 5. Test by changing the password. `PATCH` to `0.0.0.0:3000/auth/password`. Include the five items from above in the header and in the body include:
 
@@ -52,3 +52,18 @@ uid
 ```
 
 6. To continue testing update the headers with the newly returned values. You can see all the end points for users with `rake routes`
+
+## Testing Notes
+To test the notes function use the user you created in the first step and the most recent tokens.
+1. `POST` to `0.0.0.0:3000/notes` with the updated token info and the following in the body:
+
+```
+{
+	"title": "some note",
+	"created_by": "1"
+}
+```
+
+2. To test the index `GET` from `0.0.0.0:3000/notes` with the updated token
+
+The rest of the endpoints can be seen with `rake routes`
