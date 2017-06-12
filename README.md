@@ -5,6 +5,8 @@ This test uses [devise_token_auth](https://github.com/lynndylanhurley/devise_tok
 ### note on getting started
 Once you `bundle install` you will still need to `rails db:create` so PG can create a new DB.
 
+To start the API and React server run `rake start`
+
 ## Setting up the first user
 1. Start the Rails server with `rails s`
 
