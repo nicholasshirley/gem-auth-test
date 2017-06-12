@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dry-retreat-63286.herokuapp.com/",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "dev": "^0.1.3",
