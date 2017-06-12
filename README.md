@@ -42,7 +42,7 @@ uid
 
 **Note** The `access-token` and `expiry` chnage with each request, but the other tokens are stable
 
-5. Test by changing the password. `PATCH` to `lvh:3000/auth/password`. Include the five items from above in the header and in the body include:
+5. Test by changing the password. `PATCH` to `lvh.me:3000/auth/password`. Include the five items from above in the header and in the body include:
 
 ```
 {
