@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :notes
   end
 
-  root 'app#index'
-  get '*path' => 'app#index', via: :all
+  root 'application#index'
+  get '*path' => 'application#index', via: :all
 end
