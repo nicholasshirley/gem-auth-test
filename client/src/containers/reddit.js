@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
-import Picker from '../components/reddit/picker.js'
-import Posts from '../components/reddit/posts.js'
+import {Picker, Posts} from '../components/reddit'
 
 class RedditApp extends Component {
   constructor(props) {

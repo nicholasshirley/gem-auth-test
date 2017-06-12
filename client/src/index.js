@@ -1,5 +1,9 @@
 // @flow
 
+import './custom.css'
+import './constants/global.constants'
+import './helpers/api'
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -10,11 +14,12 @@ import { useRelativeLinks } from 'react-router-relative-links'
 
 import store from './configureStore'
 import App from './components'
-import About from './components/about.js'
-import Topics from './components/topics.js'
-import Reddit from './containers/reddit.js'
+import About from './components/about'
+import Topics from './components/topics'
+import Reddit from './containers/reddit'
+import { Login } from './components/login'
+import { Register } from './components/register'
 
-import './custom.css'
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
@@ -27,9 +32,11 @@ render((
       render={applyMiddleware(useRelativeLinks())}
     >
       <Route path="/" component={App}>
-        <Route path="about" component={About}/>
-        <Route path="topics" component={Topics}/>
-        <Route path="reddit" component={Reddit}/>
+        <Route path="login" component={ Login }/>
+        <Route path="register" component={ Register }/>
+        <Route path="about" component={ About }/>
+        <Route path="topics" component={ Topics }/>
+        <Route path="reddit" component={ Reddit }/>
       </Route>
     </Router>
   </Provider>

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import todos from './todos.js'
-import { selectedSubreddit, postsBySubreddit } from './reddit.js'
+import todos from './todos'
+import { selectedSubreddit, postsBySubreddit } from './reddit'
 
 const rootReducer = combineReducers({
   todos,

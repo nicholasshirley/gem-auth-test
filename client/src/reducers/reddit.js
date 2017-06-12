@@ -1,7 +1,9 @@
 import {
-  SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
-  REQUEST_POSTS, RECEIVE_POSTS
-} from '../actions/index.js'
+  SELECT_SUBREDDIT, 
+  INVALIDATE_SUBREDDIT,
+  REQUEST_POSTS, 
+  RECEIVE_POSTS
+} from '../actions'
 
 export function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {

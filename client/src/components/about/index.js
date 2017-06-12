@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-class Reddit extends Component {
+export default class About extends Component {
   render() {
     return (
         <div>
-            Reddit get API
+            About
         </div>
     );
   }
 }
-
-export default Reddit
