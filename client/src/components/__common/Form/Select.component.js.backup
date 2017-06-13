@@ -1,0 +1,93 @@
+'use strict'
+
+import React from 'react'
+import ReactDom from 'react-dom'
+
+import { ControlLabel, FormControl, FormGroup, HelpBlock } from 'components/libraries/react-bootstrap.lib'
+import { getClassName } from 'constants/index'
+
+import uuid from 'uuid'
+
+class FormSelect extends React.Component {
+    constructor(props) {
+        super(props)
+        this.getValue = ()=>{
+           return this.selectedOption()
+        }
+    }
+
+    selectedOption(){
+        let elem =  ReactDom.findDOMNode(this.inputSelected).options
+        let tmp = {}
+        if(elem[elem.selectedIndex]) {
+            tmp[this.props.iwName] = elem[elem.selectedIndex].value  
+        }else{
+            tmp[this.props.iwName] = ''
+        }
+
+        return tmp
+    }
+
+    clearError(){
+        if(this.props.iwClearError){
+            this.props.iwClearError(null)
+        }
+    }
+    
+    change(){
+        if(this.props.onChange){
+            this.props.onChange(this.getValue()[this.props.iwName])
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if ( (JSON.stringify(nextProps) === JSON.stringify(this.props)) 
+            && (JSON.stringify(nextState) === JSON.stringify(this.state)) ) {
+            return false
+        }
+        return true
+    }
+
+    render() {
+        let options = []
+        if (this.props.iwData) {
+            options = Object.keys(this.props.iwData).map(key => {
+                if(this.props.iwDefaultValue == key){
+                    return <option key={uuid()} value={key} selected>{ this.props.iwData[key] }</option>
+                }else{
+                    return <option key={uuid()} value={key}>{ this.props.iwData[key] }</option>
+                }
+            })
+        }
+
+        return (
+            <FormGroup 
+                controlId={ this.props.iwId } 
+                className={`commonFormGroup ${this.props.iwClassControl || ""} `}
+                validationState={this.props.iwError || null }
+            >
+                <ControlLabel>{ this.props.iwLabel || "" }
+                    {this.props.iwNotRequire || <span className="required">*</span>}
+                </ControlLabel>
+                
+                <FormControl
+                    componentClass="select"
+                    placeholder={ this.props.iwPlaceholder || "" }
+                    inputRef ={ ref=>{ this.inputSelected = ref} }
+                    onFocus = { this.clearError.bind(this) }
+                    onChange = { this.change.bind(this) }
+                    disabled={this.props.iwDisabled}
+                >
+                    { options }
+                </FormControl>
+                <HelpBlock 
+                    className={getClassName({hidden: this.props.iwError !== 'error'})}>
+                    {this.props.iwErrorText }
+                </HelpBlock>
+
+            </FormGroup>
+        )
+    }
+}
+
+module.exports = FormSelect
