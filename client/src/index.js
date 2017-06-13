@@ -16,7 +16,7 @@ import store from './configureStore'
 import App from './components'
 import About from './components/about'
 import Topics from './components/topics'
-import Reddit from './containers/reddit'
+import { Reddit } from './components/reddit'
 import { Login } from './components/login'
 import { Register } from './components/register'
 

@@ -1,2 +1,1 @@
-export { default as Picker } from './picker'
-export { default as Posts } from './posts'
+export { default as Reddit } from './reddit'
