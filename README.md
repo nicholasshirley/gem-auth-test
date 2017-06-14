@@ -1,4 +1,4 @@
-# Bare auth test for react integration
+	# Bare auth test for react integration
 
 This test uses [devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth) instead of the previous custom solution to handle user authentication.
 
@@ -13,7 +13,6 @@ To start the API and React server run `rake start`
 2. Load Postman and `POST` a new user to `lvh.me:3001/auth` with the body parameters:
 
 ```
-raw JSON(application/json)
 
 {
 	"email": "firstuser@example.com",
@@ -42,7 +41,7 @@ token-type
 uid
 ```
 
-**Note** The `access-token` and `expiry` chnage with each request, but the other tokens are stable
+**Note** The `access-token` and `expiry` chnage with each request. The `client` token will change with each successful `sign_in`. The other tokens are stable.
 
 5. Test by changing the password. `PATCH` to `lvh.me:3001/auth/password`. Include the five items from above in the header and in the body include:
 
@@ -61,8 +60,18 @@ To test the notes function use the user you created in the first step and the mo
 
 ```
 {
-	"title": "some note",
-	"created_by": "1"
+    "created_by": "1",
+    "title": "I'm another note",
+    "clients": {
+        "client1": {
+            "name": "name 1",
+            "role": "role 1"
+        },
+        "client 2": {
+            "name": "name 2",
+            "role": "role 2"
+        }
+    }
 }
 ```
 
