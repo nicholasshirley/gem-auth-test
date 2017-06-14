@@ -5,10 +5,10 @@ This test uses [devise_token_auth](https://github.com/lynndylanhurley/devise_tok
 ### note on getting started
 Once you `bundle install` you will still need to `rails db:create` so PG can create a new DB.
 
-To start the API and React server run `rake start`
+To start the API and React server run `rake start`. *Note* if you start the server with `rails s` it will default to `:3000`.
 
 ## Setting up the first user
-1. Start the Rails server with `rails s`
+1. Start the Rails server with `rake start`
 
 2. Load Postman and `POST` a new user to `lvh.me:3001/auth` with the body parameters:
 
@@ -56,7 +56,7 @@ uid
 
 ## Testing Notes
 To test the notes function use the user you created in the first step and the most recent tokens.
-1. `POST` to `api.lvh.me:3000/notes` with the updated token info and the following in the body:
+1. `POST` to `api.lvh.me:3001/notes` with the updated token info and the following in the body:
 
 ```
 {
