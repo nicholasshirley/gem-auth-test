@@ -1,4 +1,16 @@
+import axios from 'axios'
 import fetch from 'isomorphic-fetch'
+
+/*
+|--------------------------------------------------
+| Custom axios api
+|--------------------------------------------------
+*/
+var axiosApi = axios.create({
+  baseURL: 'http://api.lvh.me:3001',
+});
+//=================================================
+
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
@@ -103,5 +115,31 @@ export function fetchPostsIfNeeded(subreddit) {
       // Let the calling code know there's nothing to wait for.
       return Promise.resolve()
     }
+  }
+}
+
+// =============================================== //
+export const REGISTER = 'REGISTER'
+
+function register(user) {
+  return {
+    type: REGISTER,
+    data: user.data,
+  }
+}
+
+export function postRegisterForm(dataForm, resolve = () => {}, reject = () => {}) {
+  return (dispatch) => {
+    axiosApi.post('/auth', dataForm)
+    .then(function (response) {
+      dispatch(register(response.data))
+
+      resolve(response.data)
+    })
+    .catch(function (error) {
+      console.warn(error);
+
+      reject(error)
+    });
   }
 }

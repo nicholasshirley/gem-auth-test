@@ -2,7 +2,8 @@
 
 import './custom.css'
 import './constants/global.constants'
-import './helpers/api'
+// import './helpers/api'
+// import axios from 'axios'
 
 import React from 'react'
 import { render } from 'react-dom'
