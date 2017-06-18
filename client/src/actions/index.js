@@ -1,5 +1,6 @@
 import axios from 'axios'
 import fetch from 'isomorphic-fetch'
+import {getEnv} from '../config/app'
 
 /*
 |--------------------------------------------------
@@ -7,7 +8,7 @@ import fetch from 'isomorphic-fetch'
 |--------------------------------------------------
 */
 var axiosApi = axios.create({
-  baseURL: 'http://api.lvh.me:3001',
+  baseURL: getEnv(),
 });
 //=================================================
 

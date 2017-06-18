@@ -1,5 +1,5 @@
-const PRODUCTION_SERVER_API = '/api/'
-const DEVELOPMENT_SERVER_API = 'http://localhost:3000/api/'
+const PRODUCTION_SERVER_API = ''
+const DEVELOPMENT_SERVER_API = 'http://api.lvh.me:3001'
 /*
     ENVIROMENT: env
     ---------------------
