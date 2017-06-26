@@ -144,3 +144,29 @@ export function postRegisterForm(dataForm, resolve = () => {}, reject = () => {}
     });
   }
 }
+
+// =============================================== //
+export const LOGIN = 'LOGIN'
+
+function login(user) {
+  return {
+    type: LOGIN,
+    data: user.data,
+  }
+}
+
+export function postLoginForm(dataForm, resolve = () => {}, reject = () => {}) {
+  return (dispatch) => {
+    axiosApi.post('/auth/sign_in', dataForm)
+    .then(function (response) {
+      dispatch(login(response.data))
+
+      resolve(response.data)
+    })
+    .catch(function (error) {
+      console.warn(error);
+
+      reject(error)
+    });
+  }
+}

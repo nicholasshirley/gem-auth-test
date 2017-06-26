@@ -6,9 +6,9 @@ import { getRegExp }        from '../__utilize'
 export default class RegisterComponent extends React.PureComponent {
 	render() {
 		return (
-			<div>
+			<div className='auth__container register__container'>
 				<h2>Register Page</h2>
-				<div className="register_form">
+				<div className="auth__form">
 					<Input 
 						dsbPlaceholder="Email" 
 						dsbName="email"

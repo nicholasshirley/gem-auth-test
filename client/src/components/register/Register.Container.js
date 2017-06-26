@@ -32,8 +32,6 @@ class Register extends Component {
 			}
 		}
 
-		console.log(this.props)
-
 		if (validation) {
 			this.props.registerActions(data, (data) => {
 				browserHistory.push('/')
