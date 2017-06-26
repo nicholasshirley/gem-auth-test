@@ -1,5 +1,5 @@
 const 
-	WEB_APP_STORAGE_KEY = 'DSB',
+	APP_NAME            = 'DSB',
 	USER_DATA_KEY       = 'user',
 	USER_REMEMBER_KEY   = 'dsbRemember'
 	
@@ -10,11 +10,8 @@ class AppStorage {
 		if(DSB_STORAGE) {
 			return DSB_STORAGE
 		} else {
-			if (this.getWebStorage().getItem(WEB_APP_STORAGE_KEY)) {
-				this.data = JSON.parse(this.getWebStorage().getItem(WEB_APP_STORAGE_KEY))
-			} else {
-				this.data = {}
-			}
+			let dataObject = this.getWebStorage().getItem(APP_NAME)
+			this.data = dataObject ? dataObject : {}
 			DSB_STORAGE = this
 		}
 	}
@@ -28,13 +25,13 @@ class AppStorage {
 		}
 	}
 
-	updateDsbStorage() {
-		this.getWebStorage().setItem(WEB_APP_STORAGE_KEY, JSON.stringify(this.data))
+	updateStorage() {
+		this.getWebStorage().setItem(APP_NAME, JSON.stringify(this.data))
 	}
 
 	set(key, value) {
 		this.data[key] = value
-		this.updateDsbStorage()
+		this.updateStorage()
 	}
 
 	get(key) {
@@ -43,7 +40,7 @@ class AppStorage {
 
 	remove(key) {
 		delete this.data.key
-		this.updateDsbStorage()
+		this.updateStorage()
 	}
 
 	check(key) {
@@ -53,7 +50,7 @@ class AppStorage {
 
 	clear() {
 		this.data = {}
-		this.updateDsbStorage()
+		this.updateStorage()
 	}
 }
 
