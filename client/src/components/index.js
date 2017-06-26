@@ -1,11 +1,13 @@
 // @flow
 
-import React, { Component }     from 'react'
-// import { RelativeLink }         from 'react-router-relative-links'
+import React                    from 'react'
+import PropTypes                from 'prop-types'
+import { connect }              from 'react-redux'
+import Notifications            from 'react-notification-system-redux'
 import { Header }               from './__layout/header'
 import { Footer }               from './__layout/footer'
 
-class App extends Component {
+class App extends React.Component {
 	render() {
 		document.title = "DSB - Client" // Change Title or use Helmet extension
 		return (
@@ -15,9 +17,17 @@ class App extends Component {
 					{this.props.children}
 				</div>
 				<Footer />
+				<Notifications
+				  notifications={this.props.notifications}
+				/>
 			</div>
 		);
 	}
 }
 
-export default App
+App.propTypes = {
+  children: PropTypes.node,
+  notifications: PropTypes.array
+};
+
+export default connect(state => ({ notifications: state.notifications }))(App)

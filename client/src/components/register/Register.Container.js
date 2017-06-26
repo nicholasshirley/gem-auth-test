@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
+import Notifications from 'react-notification-system-redux';
 
 import RegisterComponent       from './Register.Component'
 import { postRegisterForm } from '../../actions'
 
 class Register extends Component {
 	constructor(props) {
-	  super(props)
-	
-	  this.formData = {}
+		super(props)
+
+		this.formData = {}
 	}
 
 	handleRegister = () => {
@@ -31,12 +32,29 @@ class Register extends Component {
 			}
 		}
 
+		console.log(this.props)
+
 		if (validation) {
 			this.props.registerActions(data, (data) => {
-				console.log("SuccessFull")
 				browserHistory.push('/')
+
+				const notificationOpts = {
+					title: 'Success',
+					message: 'Register successful!',
+					position: 'tr',
+					autoDismiss: 5,
+				};
+
+				this.props.dispatch(Notifications.success(notificationOpts));
 			}, (error) => {
-				console.log(error.message)
+				const notificationOpts = {
+					title: 'Error',
+					message: error.message,
+					position: 'tr',
+					autoDismiss: 5,
+				};
+
+				this.props.dispatch(Notifications.error(notificationOpts));
 			})
 		}
 	}
@@ -62,9 +80,10 @@ const mapStateToProps = (store, ownProps) => {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		registerActions: bindActionCreators(postRegisterForm, dispatch),
+		dispatch: dispatch,
 	}
 }
 
