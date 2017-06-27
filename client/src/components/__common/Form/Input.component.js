@@ -131,8 +131,8 @@ export default class Input extends Component {
 				className={ `dsb_form form-group ${this.props.dsbClassControl || "" }` }
 				validationState={ this.state.dsbValidationState || null }
 			>
-				<ControlLabel>
-					{ this.props.dsbLabel || '' }
+				<ControlLabel  className={getClassName({hidden: (this.props.dsbLabel == null && this.props.dsbRequired == null)})}>
+					{ this.props.dsbLabel || null }
 					{ this.props.dsbRequired ? <span className="dsb_form__required">*</span> : null }
 				</ControlLabel>
 

@@ -1,16 +1,5 @@
-import axios from 'axios'
 import fetch from 'isomorphic-fetch'
-import {getEnv} from '../config/app'
-
-/*
-|--------------------------------------------------
-| Custom axios api
-|--------------------------------------------------
-*/
-var axiosApi = axios.create({
-  baseURL: getEnv(),
-});
-//=================================================
+import request from '../helpers/request'
 
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
@@ -131,7 +120,7 @@ function register(user) {
 
 export function postRegisterForm(dataForm, resolve = () => {}, reject = () => {}) {
   return (dispatch) => {
-    axiosApi.post('/auth', dataForm)
+    request().post('/auth', dataForm)
     .then(function (response) {
       dispatch(register(response.data))
 
@@ -157,8 +146,9 @@ function login(user) {
 
 export function postLoginForm(dataForm, resolve = () => {}, reject = () => {}) {
   return (dispatch) => {
-    axiosApi.post('/auth/sign_in', dataForm)
+    request().post('/auth/sign_in', dataForm)
     .then(function (response) {
+      console.log(response)
       dispatch(login(response.data))
 
       resolve(response.data)
