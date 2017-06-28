@@ -4,6 +4,8 @@ import React                    from 'react'
 import PropTypes                from 'prop-types'
 import { connect }              from 'react-redux'
 import Notifications            from 'react-notification-system-redux'
+import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider'
+
 import { Header }               from './__layout/header'
 import { Footer }               from './__layout/footer'
 
@@ -11,16 +13,18 @@ class App extends React.Component {
 	render() {
 		document.title = "DSB - Client" // Change Title or use Helmet extension
 		return (
-			<div className="App">
-				<Header />
-				<div className="Content">
-					{this.props.children}
+			<MuiThemeProvider>
+				<div className="App">
+					<Header />
+					<div className="Content">
+						{this.props.children}
+					</div>
+					<Footer />
+					<Notifications
+					  notifications={this.props.notifications}
+					/>
 				</div>
-				<Footer />
-				<Notifications
-				  notifications={this.props.notifications}
-				/>
-			</div>
+			</MuiThemeProvider>
 		);
 	}
 }

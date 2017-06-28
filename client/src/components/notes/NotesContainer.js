@@ -2,6 +2,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import RaisedButton from 'material-ui/RaisedButton';
+
 import NotesComponent from './NotesComponent'
 import { getAllNotes } from '../../actions'
 
@@ -14,7 +16,7 @@ class NotesContainer extends React.Component {
 	render() {
 		return (
 			<div className='notes__container'>
-				<button className='btn btn-success' onClick={this.handleGetAllNotes}>Get All Notes</button>
+				<RaisedButton label="Get All Notes" primary={true} onClick={this.handleGetAllNotes} />
 				<NotesComponent notes={this.props.notes} />
 			</div>
 		);

@@ -9,6 +9,10 @@ import { Provider } from 'react-redux'
 import { browserHistory, Router, Route } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
+// Needed for onTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 import store from './configureStore'
 import App from './components'
 import About from './components/about'
