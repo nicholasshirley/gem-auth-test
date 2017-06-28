@@ -1,9 +1,9 @@
 // @flow
 
-import React, { Component }   from 'react'
-import { RelativeLink }       from 'react-router-relative-links'
+import React          from 'react'
+import { Link }       from 'react-router'
 
-export default class HeaderComponent extends Component {
+export default class HeaderComponent extends React.Component {
 	render() {
 		return (
 			<header className="bs-docs-nav navbar navbar-static-top" id="top"> 
@@ -15,16 +15,16 @@ export default class HeaderComponent extends Component {
 							<span className="icon-bar"></span> 
 							<span className="icon-bar"></span> 
 						</button> 
-						<RelativeLink to="./" className="navbar-brand">Dealsheet Board</RelativeLink>
+						<Link to="/" className="navbar-brand">Dealsheet Board</Link>
 					</div> 
 					<nav className="collapse navbar-collapse" id="bs-navbar"> 
 						<ul className="nav navbar-nav"> 
-							<li className="active"><RelativeLink to="./notes" >Notes</RelativeLink></li> 
-							<li><RelativeLink to="./about" >About</RelativeLink></li> 
-							<li><RelativeLink to="./topics" >Topics</RelativeLink></li> 
-							<li><RelativeLink to="./reddit" >Reddit</RelativeLink></li> 
-							<li><RelativeLink to="./login" >Login</RelativeLink></li> 
-							<li><RelativeLink to="./register" >Register</RelativeLink></li> 
+							<li className="active"><Link to="/notes" >Notes</Link></li> 
+							<li><Link to="/about" >About</Link></li> 
+							<li><Link to="/topics" >Topics</Link></li> 
+							<li><Link to="/reddit" >Reddit</Link></li> 
+							<li><Link to="/login" >Login</Link></li> 
+							<li><Link to="/register" >Register</Link></li> 
 						</ul> 
 					</nav> 
 				</div> 

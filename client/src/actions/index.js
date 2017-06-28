@@ -146,17 +146,60 @@ function login(user) {
 
 export function postLoginForm(dataForm, resolve = () => {}, reject = () => {}) {
   return (dispatch) => {
+
     request().post('/auth/sign_in', dataForm)
+
     .then(function (response) {
-      console.log(response)
+
+      window.STORAGE.set('headers', {...response.headers})
+
       dispatch(login(response.data))
 
       resolve(response.data)
+
     })
+
     .catch(function (error) {
+
       console.warn(error);
 
       reject(error)
+
     });
+
+  }
+}
+
+// =============================================== //
+export const GET_ALL_NOTES = 'GET_ALL_NOTES'
+
+function getAllNotesReducer(notes) {
+  return {
+    type: GET_ALL_NOTES,
+    data: notes,
+  }
+}
+
+export function getAllNotes() {
+  return (dispatch) => {
+
+    request(window.STORAGE.get('headers')).get('/notes')
+
+    .then(function (response) {
+      
+      console.log(response)
+
+      window.STORAGE.set('headers', {...response.headers})
+
+      dispatch(getAllNotesReducer(response.data))
+
+    })
+
+    .catch(function (error) {
+
+      console.warn(error);
+
+    });
+
   }
 }

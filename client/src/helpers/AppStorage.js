@@ -1,32 +1,20 @@
-const 
-	APP_NAME            = 'DSB',
-	USER_DATA_KEY       = 'user',
-	USER_REMEMBER_KEY   = 'dsbRemember'
-	
-let DSB_STORAGE
+const APP_NAME            = 'DSB'
 
-class AppStorage {
+export class AppStorage {
 	constructor(){
-		if(DSB_STORAGE) {
-			return DSB_STORAGE
-		} else {
-			let dataObject = this.getWebStorage().getItem(APP_NAME)
-			this.data = dataObject ? dataObject : {}
-			DSB_STORAGE = this
-		}
-	}
-	
-	getWebStorage() {
 		if (typeof(Storage) !== "undefined") {
-			return localStorage
+			this.dsbStorage = localStorage
 		} else {
 			alert('Please upgrade your browser to use this site! Thanks.')
 			return
 		}
+
+		let dataObject = this.dsbStorage.getItem(APP_NAME)
+		this.data = dataObject ? JSON.parse(dataObject) : {}
 	}
 
 	updateStorage() {
-		this.getWebStorage().setItem(APP_NAME, JSON.stringify(this.data))
+		this.dsbStorage.setItem(APP_NAME, JSON.stringify(this.data))
 	}
 
 	set(key, value) {
@@ -43,19 +31,17 @@ class AppStorage {
 		this.updateStorage()
 	}
 
-	check(key) {
-		if(this.data[key]) return true
-		return false
+	// Only support for Object 2 dimension
+	check(key, childKey = null) {
+		if (childKey) {
+			return (this.data[key]  && this.data[key][childKey]) ? true : false
+		} else {
+			return this.data[key] ? true : false
+		}
 	}
 
 	clear() {
 		this.data = {}
 		this.updateStorage()
 	}
-}
-
-export {
-	AppStorage,
-	USER_DATA_KEY,
-	USER_REMEMBER_KEY
 }

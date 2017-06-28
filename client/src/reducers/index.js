@@ -6,6 +6,7 @@ import todos from './todos'
 import { selectedSubreddit, postsBySubreddit } from './reddit'
 import { userRegister } from './register'
 import { userLogin } from './login'
+import { notes } from './notes'
 
 const rootReducer = combineReducers({
   notifications,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
 
+  notes,
   userRegister,
   userLogin,
   routing: routerReducer
