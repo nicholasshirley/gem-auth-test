@@ -1,8 +1,7 @@
 // @flow
 
 import React, { Component }   from 'react'
-import logo                     from '../../../styles/images/logos/logo.svg'
-// import { RelativeLink }       from 'react-router-relative-links'
+import logo                     from '../../../styles/assets/imgs/logos/logo.svg'
 
 export default class FooterComponent extends Component {
 	render() {

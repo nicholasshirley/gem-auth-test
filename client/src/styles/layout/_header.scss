@@ -1,0 +1,129 @@
+.header {
+    background: $clairvoyant;
+    min-height: $height_header;
+
+    .container {
+        width: 90%;
+    }
+
+    &__logo, &__form, &__nav, &__user {
+        height: $height_header;
+        align-items: center;
+        display: flex;
+    }
+
+    &__logo {
+        width: 7rem;
+        float: left;
+        a {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &__form {
+        margin: 0 0 0 1rem;
+        .form-group {
+            margin: 0 0.2rem;
+            select {
+                background: $clairvoyant;
+                border: 2px solid white;
+                color: white;
+                max-width: 8rem;
+            }
+        }
+    }
+
+    &__nav { 
+        @media (max-width: 480px) {
+            display: block;
+            height: auto;
+            .nav {
+                display: block;
+                a {
+                    width: 100%;
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+        }   
+        .nav {
+            height: 100%;
+            align-items: center;
+            margin: 0 auto;
+            @media (max-width: 992px) {
+                margin: 0;
+            }
+            a {
+                color: white;
+                text-transform: uppercase;
+                height: 100%;
+                align-items: center;
+                display: flex;
+                position: relative;
+                padding: 0.5rem 0.7rem;
+                &:hover, &:active, &:focus {
+                    color: $sandy_brown;
+                    text-decoration: none;
+                    &:before { 
+                        transition: 0.4s ease;
+                        opacity: 1;
+                        bottom: 0;
+                    }
+                }
+                &:before {
+                    @include position(absolute, null null 50% 0);
+                    width: 100%;
+                    height: 3px;
+                    background: $sandy_brown;
+                    content: '';
+                    opacity: 0;
+                }
+                i {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+    }
+
+    &__user {
+        float: right;
+        &__avatar {
+            img {
+                height: $height_header/2;
+                border-radius: 100%;
+                margin: 0 0.7rem;
+            }
+        }
+
+        &__actions {
+            .dropdown {
+                & > button, & > button.active {
+                    background: transparent;
+                    color: white;
+                    border: 0;
+                    box-shadow: none;
+                }
+
+                & > button {
+                    padding: 0.5rem;
+                    cursor: pointer;
+                    i {
+                        font-size: 1.5rem;
+                        margin-left: 0.5rem;
+                        font-weight: bold;
+                        @include position(0.2rem null null null);
+                    }
+                }
+
+                .dropdown-item {
+                    i {
+                        width: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
