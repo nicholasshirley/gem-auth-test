@@ -108,6 +108,12 @@ export function fetchPostsIfNeeded(subreddit) {
   }
 }
 
+
+/*
+|--------------------------------------------------
+| ALl Actions
+|--------------------------------------------------
+*/
 // =============================================== //
 export const REGISTER = 'REGISTER'
 
@@ -152,6 +158,9 @@ export function postLoginForm(dataForm, resolve = () => {}, reject = () => {}) {
     .then(function (response) {
 
       window.STORAGE.set('headers', {...response.headers})
+
+      // Save info of user in localStorage
+      window.STORAGE.set('user', {...response.data.data})
 
       dispatch(login(response.data))
 
