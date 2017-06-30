@@ -9,8 +9,11 @@ import RaisedButton                  from 'material-ui/RaisedButton';
 import { postLoginForm }             from '../../actions'
 import { getRegExp }                 from '../__utilize'
 
+import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/action/home';
+
 const LoginComponent = ({handleLogin, formData, error}) => {
-	console.log(error)
 	return (
 		<div className='auth__container login__container'>
 			<h2>Login Page</h2>
