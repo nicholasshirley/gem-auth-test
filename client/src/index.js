@@ -19,8 +19,8 @@ import About from './components/about'
 import Topics from './components/topics'
 import Notes from './components/notes'
 import { Reddit } from './components/reddit'
-import { Login } from './components/login'
-import { Register } from './components/register'
+import { Login } from './components/auth'
+import { Register } from './components/auth'
 
 
 // Create an enhanced history that syncs navigation events with the store

@@ -5,7 +5,17 @@
 html, body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 16px;
+}
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 40px white inset;
+}
+.input__group {
+	width: 100% !important;
+}
+.button__group {
+	width: 100%;
+	margin-top: 1rem;
 }
 
 // -----------------------------
